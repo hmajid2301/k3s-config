@@ -1,0 +1,3 @@
+config:
+  dotfiles:k8sNamespace: nginx-ingress
+  pulumi:template: helm-kubernetes-go
