@@ -23,6 +23,7 @@
           go
           pulumi
           pulumiPackages.pulumi-language-go
+          inputs.colmena.packages.${pkgs.system}.colmena
         ];
       };
   };
