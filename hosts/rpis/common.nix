@@ -58,31 +58,32 @@
     sopsFile = ./secrets.yaml;
   };
 
-  services.k3s.tokenFile = config.sops.secrets.k3s_token.path;
-
   sops = {
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
   };
 
-  services.tailscale.enable = true;
-  services.k3s.enable = true;
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-    publish = {
+  services = {
+    tailscale.enable = true;
+    k3s.enable = true;
+    k3s.tokenFile = config.sops.secrets.k3s_token.path;
+    avahi = {
       enable = true;
-      addresses = true;
-      domain = true;
-      hinfo = true;
-      userServices = true;
-      workstation = true;
+      nssmdns4 = true;
+      publish = {
+        enable = true;
+        addresses = true;
+        domain = true;
+        hinfo = true;
+        userServices = true;
+        workstation = true;
+      };
     };
-  };
 
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
-    settings.KbdInteractiveAuthentication = false;
+    openssh = {
+      enable = true;
+      settings.PasswordAuthentication = false;
+      settings.KbdInteractiveAuthentication = false;
+    };
   };
 
   security.sudo.wheelNeedsPassword = false;

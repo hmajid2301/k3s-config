@@ -1,5 +1,6 @@
 keys:
   - &hosts:
+    - &haseeb_workstation age1emuknmcdwt5letup4eatvjxrrllkd06uqhslvzhwr0jkjj9f8ewquz9xur
     - &workstation age1fy626vylmpya4t4gyqx6kw4ggn7j79upjgt4jka2gq6lysluhd0s8ytqls
     - &framework age1kzxen8ynw28h935jnjc9t8cx4p8mv6angk5suvkp6ntu4am9pe4smfw22z
     - &curve age1f44n6uklwmhfxthpq8k9ztq7q60k6g0u89ratdy3gurc0pqhhqjsx2x75g
@@ -7,11 +8,12 @@ keys:
     - &two age1xs98vjqzgh56awftj8y4g0d3ewzpf6n2rzmfgxrzszzgcfn4avwq97sxah
     - &three age1wn4j6g25t5vv6cs8ke426sqw5459j0x5hvfpfcy8fd0exp7zjpfqzrf0ju
     - &four age1e7kmhzlu4ev6dagu5upuchh6v3c7wqv6mn96gqfcxdlnqazm8aeq8d37m6
-      
+
 creation_rules:
   - path_regex: hosts/rpis/secrets.ya?ml$
     key_groups:
     - age:
+      - *haseeb_workstation
       - *workstation
       - *framework
       - *curve

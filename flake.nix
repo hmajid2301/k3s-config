@@ -20,6 +20,7 @@
     in
       pkgs.mkShell {
         packages = with pkgs; [
+          sops
           go
           pulumi
           pulumiPackages.pulumi-language-go
