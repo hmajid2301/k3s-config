@@ -18,57 +18,57 @@
     ];
   };
 
-  strawberry = {
+  one = {
     imports = [
-      ./rpis/strawberry.nix
+      ./rpis/one.nix
     ];
 
     nixpkgs.system = "aarch64-linux";
     deployment = {
       buildOnTarget = true;
-      targetHost = "strawberry";
-      targetUser = "strawberry";
+      targetHost = "one.local";
+      targetUser = "one";
       tags = ["rpi"];
     };
   };
 
-  orange = {
+  two = {
     imports = [
-      ./rpis/orange.nix
+      ./rpis/two.nix
     ];
 
     nixpkgs.system = "aarch64-linux";
     deployment = {
       buildOnTarget = true;
-      targetHost = "orange";
-      targetUser = "orange";
+      targetHost = "two.local";
+      targetUser = "two";
       tags = ["infra" "rpi"];
     };
   };
 
-  guava = {
+  three = {
     imports = [
-      ./rpis/guava.nix
+      ./rpis/three.nix
     ];
 
     nixpkgs.system = "aarch64-linux";
     deployment = {
       buildOnTarget = true;
-      targetHost = "guava";
-      targetUser = "guava";
-      tags = ["rpi"];
+      targetHost = "three.local";
+      targetUser = "three";
+      tags = ["infra" "rpi"];
     };
   };
 
-  mango = {
+  four = {
     imports = [
-      ./rpis/mango.nix
+      ./rpis/four.nix
     ];
 
     nixpkgs.system = "aarch64-linux";
     deployment = {
-      targetHost = "mango.local";
-      targetUser = "mango";
+      targetHost = "four.local";
+      targetUser = "four";
       tags = ["infra" "rpi"];
     };
   };
