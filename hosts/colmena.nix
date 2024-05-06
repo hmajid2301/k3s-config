@@ -26,7 +26,7 @@
     nixpkgs.system = "aarch64-linux";
     deployment = {
       buildOnTarget = true;
-      targetHost = "one.local";
+      targetHost = "one";
       targetUser = "one";
       tags = ["rpi"];
     };
@@ -40,7 +40,7 @@
     nixpkgs.system = "aarch64-linux";
     deployment = {
       buildOnTarget = true;
-      targetHost = "two.local";
+      targetHost = "two";
       targetUser = "two";
       tags = ["infra" "rpi"];
     };
@@ -54,7 +54,7 @@
     nixpkgs.system = "aarch64-linux";
     deployment = {
       buildOnTarget = true;
-      targetHost = "three.local";
+      targetHost = "three";
       targetUser = "three";
       tags = ["infra" "rpi"];
     };
@@ -67,7 +67,7 @@
 
     nixpkgs.system = "aarch64-linux";
     deployment = {
-      targetHost = "four.local";
+      targetHost = "four";
       targetUser = "four";
       tags = ["infra" "rpi"];
     };

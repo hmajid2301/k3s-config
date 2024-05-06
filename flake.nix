@@ -20,11 +20,14 @@
     in
       pkgs.mkShell {
         packages = with pkgs; [
+          inputs.colmena.packages.${pkgs.system}.colmena
           sops
           go
           pulumi
           pulumiPackages.pulumi-language-go
-          inputs.colmena.packages.${pkgs.system}.colmena
+          kubernetes-helm
+          k9s
+          kubectl
         ];
       };
   };
