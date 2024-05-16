@@ -1,5 +1,8 @@
 # Home Lab
 
+![Pi Cluster](docs/pi-cluster-front.jpeg)
+![Dashboard](docs/dashboard.png)
+
 This is a repository containing all the configuration related to my Home Lab. At the moment this manages a
 4x RPI K3S cluster using pulumi.
 

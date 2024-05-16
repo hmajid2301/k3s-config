@@ -8,9 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-var namespace = "monitoring"
-
 func addDashboard(ctx *pulumi.Context) error {
+	namespace := "monitoring"
+
 	_, err := helmv3.NewChart(ctx, "kubernetes-dashboard", helmv3.ChartArgs{
 		Chart: pulumi.String("kubernetes-dashboard"),
 		FetchArgs: helmv3.FetchArgs{

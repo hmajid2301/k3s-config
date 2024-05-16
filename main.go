@@ -11,6 +11,11 @@ func main() {
 			return err
 		}
 
+		err = addGitlabRunner(ctx)
+		if err != nil {
+			return err
+		}
+
 		return nil
 	})
 }

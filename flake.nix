@@ -10,6 +10,9 @@
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
     in
       pkgs.mkShell {
+        shellHook = ''
+          export KUBECONFIG=~/.kube/config.personal
+        '';
         packages = with pkgs; [
           sops
           go
