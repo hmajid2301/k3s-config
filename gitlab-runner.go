@@ -34,13 +34,6 @@ func addGitlabRunner(ctx *pulumi.Context) error {
 			},
 			"runnerToken":             cfg.GetSecret("gitlabRunnerToken"),
 			"runnerRegistrationToken": pulumi.String(""),
-			"runners": pulumi.Map{
-				"config": pulumi.String(`
-[[runners]]
-  [runners.kubernetes]
-    helper_image = "gitlab/gitlab-runner-helper:arm64-latest"
-`),
-			},
 		},
 	})
 	if err != nil {
