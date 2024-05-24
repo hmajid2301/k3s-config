@@ -22,7 +22,8 @@ func addGitlabRunner(ctx *pulumi.Context) error {
 	}
 
 	_, err = helmv3.NewChart(ctx, "gitlab-runner", helmv3.ChartArgs{
-		Chart: pulumi.String("gitlab-runner"),
+		Chart:   pulumi.String("gitlab-runner"),
+		Version: pulumi.String("v0.64.1"),
 		FetchArgs: helmv3.FetchArgs{
 			Repo: pulumi.String(`https://charts.gitlab.io`),
 		},

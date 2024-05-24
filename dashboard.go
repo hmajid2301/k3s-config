@@ -12,7 +12,8 @@ func addDashboard(ctx *pulumi.Context) error {
 	namespace := "monitoring"
 
 	_, err := helmv3.NewChart(ctx, "kubernetes-dashboard", helmv3.ChartArgs{
-		Chart: pulumi.String("kubernetes-dashboard"),
+		Chart:   pulumi.String("kubernetes-dashboard"),
+		Version: pulumi.String("7.4.0"),
 		FetchArgs: helmv3.FetchArgs{
 			Repo: pulumi.String(`https://kubernetes.github.io/dashboard/`),
 		},

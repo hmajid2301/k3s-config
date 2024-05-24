@@ -11,6 +11,21 @@ func main() {
 			return err
 		}
 
+		err = addMonitoring(ctx)
+		if err != nil {
+			return err
+		}
+
+		err = addHA(ctx)
+		if err != nil {
+			return err
+		}
+
+		err = addImmich(ctx)
+		if err != nil {
+			return err
+		}
+
 		err = addGitlabRunner(ctx)
 		if err != nil {
 			return err
