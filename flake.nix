@@ -14,13 +14,11 @@
           export KUBECONFIG=~/.kube/config.personal
         '';
         packages = with pkgs; [
-          sops
-          go
-          pulumi
-          pulumiPackages.pulumi-language-go
+          fluxcd
           kubernetes-helm
           k9s
           kubectl
+          sops
         ];
       };
   };

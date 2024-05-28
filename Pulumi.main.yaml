@@ -1,4 +1,0 @@
-config:
-  home-lab:gitlabRunnerToken:
-    secure: AAABAPK1lPb0O71sBow69iIOC0sGQ/qbbnTXHKCoTK8DqIHw98+7gztoIJTRPd+bDgpWMuwIYqpc
-  pulumi:template: kubernetes-go

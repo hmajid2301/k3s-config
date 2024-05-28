@@ -1,35 +1,42 @@
 # Home Lab
 
-![Pi Cluster](docs/pi-cluster-front.jpeg)
-![Dashboard](docs/dashboard.png)
+This is a repository containing all the configuration related to my Home Lab.
+- 4x Raspberry Pi 4
+- 1x Framework 12th Gen Intel Main Board
+- 1x Mini Forum
 
-This is a repository containing all the configuration related to my Home Lab. At the moment this manages a
-4x RPI K3S cluster using pulumi.
+You can read more about how it is all setup on my [blog](https://haseebmajid.dev/series/setup-raspberry-pi-cluster-with-k3s-and-nixos/).
+You can find a list of how these devices are [setup using Nix](https://github.com/hmajid2301/dotfiles).
 
-You can rad more about how it is all setup on my [blog](https://haseebmajid.dev/series/setup-raspberry-pi-cluster-with-k3s-and-nixos/).
+This repository uses fluxcd for GitOps, to automatically deploy changes made to this repository on the main branch.
 
 ## Usage
 
 > Note I copied the kube config file from the cluster and called it config.personal
 
-To apply changes to the cluster.
-
 ```bash
-export KUBECONFIG=$HOME/.kube/config.personal
-pulumi up
+git clone git@gitlab.com:hmajid2301/home-lab.git
+cd home-lab
+direnv allow
+
+# To force a reconcile with the git repo
+flux reconcile  source git flux-system
 ```
 
-Teardown and destroy the cluster, at least all the kube resources created by pulumi.
+## Apps
 
-```bash
-pulumi down
-```
+We have deployed the following apps in our home-lab:
+
+- jellyfin (managed via Nix)
+- cert-manager
+- kubernetes-dashboard
+- gitlab runner
+
 
 ## Images
 
 ![Pi Cluster](docs/pi-cluster-front.jpeg)
 ![Dashboard](docs/dashboard.png)
-
 
 ## More Information
 
