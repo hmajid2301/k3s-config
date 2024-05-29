@@ -35,8 +35,8 @@ We have deployed the following apps in our home-lab:
 
 ## Images
 
-![Pi Cluster](docs/pi-cluster-front.jpeg)
-![Dashboard](docs/dashboard.png)
+![Pi Cluster](docs/images/pi-cluster-front.jpeg)
+![Dashboard](docs/images/dashboard.png)
 
 ## More Information
 

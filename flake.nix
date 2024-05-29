@@ -19,6 +19,10 @@
           k9s
           kubectl
           sops
+
+          go-task
+          mkdocs
+          python311Packages.mkdocs-material
         ];
       };
   };

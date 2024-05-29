@@ -1,0 +1,12 @@
+version: "3"
+
+tasks:
+  test:site:
+    desc: Build test site.
+    cmds:
+      - mkdocs build --strict --verbose --site-dir test
+
+  site:
+    desc: Build site.
+    cmds:
+      - mkdocs build --strict --verbose --site-dir public
