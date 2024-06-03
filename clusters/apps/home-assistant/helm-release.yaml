@@ -1,5 +1,5 @@
 
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: home-assistant
@@ -7,10 +7,10 @@ metadata:
 spec:
   chart:
     spec:
-      chart: pajikos/home-assistant
+      chart: home-assistant
       sourceRef:
         kind: HelmRepository
-        name: home-assistant
+        name: pajikos
         namespace: apps
       version: 0.2.60
   interval: 1m0s
