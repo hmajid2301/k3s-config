@@ -73,6 +73,7 @@ markdown_extensions:
 
 nav:
   - Introduction: index.md # formerly hardlinked to README.md
+  - NixOS: nixos.md
   - Cluster: cluster.md
   - Apps: apps.md
   - Images: images.md

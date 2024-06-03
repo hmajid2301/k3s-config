@@ -7,12 +7,8 @@ These are all the nodes in my home lab, all of them are running NixOS you can fi
 
 |   Hostname                                         |            Board                                          |               CPU                                              |  RAM        |         Primary GPU        |
 | :---------:                                        | :-------------------------:                               | :----------------------------:                                 | :---:       | :-------------------------:|
-| `um790`                                            |  UM790                                                    |  AMD Ryzen 9 7940HS                                            | 64GB        | AMD Radeon™ 780M           |
-| `mainboard`                                        | Framework 12th Gen Intel                                  |  i7-1280P                                                      | 32GB        | Intel Iris Graphics        |
-| `pi-server-1`                                      | Rapsberry Pi 4B                                           |  Quad core Cortex-A72                                          | 4GB         | VideoCore VI @ 500 MHz     |
-| `pi-server-2`                                      | Rapsberry Pi 4B                                           |  Quad core Cortex-A72                                          | 4GB         | VideoCore VI @ 500 MHz     |
-| `pi-server-3`                                      | Rapsberry Pi 4B                                           |  Quad core Cortex-A72                                          | 8GB         | VideoCore VI @ 500 MHz     |
-| `pi-server-4`                                      | Rapsberry Pi 4B                                           |  Quad core Cortex-A72                                          | 8GB         | VideoCore VI @ 500 MHz     |
+| [`um790`](https://gitlab.com/hmajid2301/dotfiles/-/blob/main/systems/x86_64-linux/um790/default.nix?ref_type=heads)                                           |  UM790                                                    |  AMD Ryzen 9 7940HS                                            | 64GB        | AMD Radeon™ 780M           |
+| [`mainboard`](https://gitlab.com/hmajid2301/dotfiles/-/blob/main/systems/x86_64-linux/mainboard/default.nix?ref_type=heads)                                        | Framework 12th Gen Intel                                  |  i7-1280P                                                      | 32GB        | Intel Iris Graphics        |
 ## Setup
 
 This repository uses fluxcd for GitOps, to automatically deploy changes made to this repository on the main branch.
@@ -26,12 +22,14 @@ git clone git@gitlab.com:hmajid2301/home-lab.git
 cd home-lab
 direnv allow
 
-# To force a reconcile with the git repo
-flux reconcile  source git flux-system
+# Can load from an env file
+GITLAB_TOKEN=deploy-token
+flux bootstrap gitlab \
+        --owner=hmajid2301 \
+        --repository=home-lab \
+        --branch=main \
+        --path=clusters/ \
+        --personal --deploy-token-auth
+
 ```
 
-
-## More Information
-
-- Hosts Manged by Nix: https://gitlab.com/hmajid2301/dotfiles
-- Blog Post: https://haseebmajid.dev/posts/2023-11-18-how-i-setup-my-raspberry-pi-cluster-with-nixos/
