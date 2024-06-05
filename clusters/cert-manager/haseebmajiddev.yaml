@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-haseebmajid-dev
+  namespace: kube-system
+spec:
+  secretName: wildcard-haseebmajid-dev-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - "*.haseebmajid.dev"

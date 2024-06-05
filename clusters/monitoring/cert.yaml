@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard
+  namespace: monitoring
+  # annotations:
+  #   kubernetes.io/ingress.class: traefik
+  #   traefik.ingress.kubernetes.io/redirect-entry-point: https
+spec:
+  rules:
+    - host: dashboard.homelab.haseebmajid.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: kubernetes-dashboard-kong-proxy
+                port:
+                  number: 8443
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - dashboard.homelab.haseebmajid.dev
