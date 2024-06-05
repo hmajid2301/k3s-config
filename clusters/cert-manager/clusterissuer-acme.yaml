@@ -15,12 +15,3 @@ spec:
         apiKeySecretRef:
           name: cert-manager-secrets
           key: cloudflare-api-key
-      # ---
-      # selector:
-      #   dnsZones:
-      #   - 'your-domain'
-
-    # HTTP Challenge:
-    # - http01:
-    #    ingress:
-    #      class: traefik
