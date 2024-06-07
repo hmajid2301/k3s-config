@@ -1,24 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: traefik-ingress
+  name: home-assistant-ingress
   namespace: kube-system
   annotations:
     kubernetes.io/ingress.class: "traefik"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   rules:
-    - host: traefik.homelab.haseebmajid.dev
+    - host: home.homelab.haseebmajid.dev
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: traefik-dashboard
+                name: home-assistant
                 port:
-                  number: 9000
+                  number: 8123
   tls:
     - hosts:
-        - traefik.homelab.haseebmajid.dev
-      secretName: traefik-haseebmajid-dev-tls
+        - home.homelab.haseebmajid.dev
+      secretName: home-haseebmajid-dev-tls
