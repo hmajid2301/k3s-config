@@ -1,24 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: traefik-ingress
-  namespace: kube-system
+  name: longhorn-ui-ingress
+  namespace: longhorn-system
   annotations:
     spec.ingressClassName: "traefik"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   rules:
-    - host: traefik.homelab.haseebmajid.dev
+    - host: longhorn.homelab.haseebmajid.dev
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: traefik-dashboard
+                name: longhorn-frontend
                 port:
-                  number: 9000
+                  number: 80
   tls:
     - hosts:
-        - traefik.homelab.haseebmajid.dev
-      secretName: traefik-haseebmajid-dev-tls
+        - longhorn.homelab.haseebmajid.dev
+      secretName: longhorn-haseebmajid-dev-tls
