@@ -15,6 +15,23 @@ spec:
       version: 0.2.60
   interval: 1m0s
   values:
+    configuration:
+      enabled: true
+      forceInit: true
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "traefik"
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: home.homelab.haseebmajid.dev
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - home.homelab.haseebmajid.dev
+          secretName: home-haseebmajid-dev-tls
     replicaCount: 1
     podSecurityContext:
       capabilities:
