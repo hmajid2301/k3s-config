@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: gabe565
+  namespace: apps
+spec:
+  interval: 1m0s
+  provider: generic
+  url: https://charts.gabe565.com

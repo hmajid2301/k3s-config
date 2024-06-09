@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: capacitor-ingress
+  namespace: flux-system
+  annotations:
+    spec.ingressClassName: "traefik"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  rules:
+    - host: capacitor.homelab.haseebmajid.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: capacitor
+                port:
+                  number: 8000
+  tls:
+    - hosts:
+        - capacitor.homelab.haseebmajid.dev
+      secretName: capacitor-haseebmajid-dev-tls

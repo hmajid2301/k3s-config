@@ -1,0 +1,60 @@
+
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: monitoring
+      version: 60.0.2
+  interval: 1m0s
+  values:
+    alertmanager:
+      ingress:
+        enabled: true
+        className: traefik
+        annotations:
+          kubernetes.io/ingress.class: "traefik"
+          cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        hosts:
+          - alertmanager.homelab.haseebmajid.dev
+        tls:
+          - hosts:
+              - alertmanager.homelab.haseebmajid.dev
+            secretName: alertmanager-haseebmajid-dev-tls
+    grafana:
+      ingress:
+        enabled: true
+        className: traefik
+        annotations:
+          kubernetes.io/ingress.class: "traefik"
+          cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        paths: /
+        hosts:
+          - grafana.homelab.haseebmajid.dev
+        tls:
+          - hosts:
+              - grafana.homelab.haseebmajid.dev
+            secretName: grafana-haseebmajid-dev-tls
+    prometheus:
+      ingress:
+        enabled: true
+        className: traefik
+        annotations:
+          kubernetes.io/ingress.class: "traefik"
+          cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        hosts:
+          - prometheus.homelab.haseebmajid.dev
+        tls:
+          - hosts:
+              - prometheus.homelab.haseebmajid.dev
+            secretName: prometheus-haseebmajid-dev-tls
+
+
+

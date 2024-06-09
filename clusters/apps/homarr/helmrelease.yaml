@@ -22,13 +22,13 @@ spec:
         kubernetes.io/ingress.class: "traefik"
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
       hosts:
-        - host: homelab.haseebmajid.dev
+        - host: homarr.homelab.haseebmajid.dev
           paths:
             - path: /
               pathType: ImplementationSpecific
       tls:
         - hosts:
-            - homelab.haseebmajid.dev
-          secretName: haseebmajid-dev-tls
+            - homarr.homelab.haseebmajid.dev
+          secretName: homarr-haseebmajid-dev-tls
 
 
