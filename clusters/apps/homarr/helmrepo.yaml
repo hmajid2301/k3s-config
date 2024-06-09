@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: oben01
+  namespace: apps
+spec:
+  interval: 1m0s
+  provider: generic
+  url: https://oben01.github.io/charts/

@@ -1,0 +1,34 @@
+
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: homarr
+  namespace: apps
+spec:
+  chart:
+    spec:
+      chart: homarr
+      sourceRef:
+        kind: HelmRepository
+        name: oben01
+        namespace: apps
+      version: 1.2.5
+  interval: 1m0s
+  values:
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        kubernetes.io/ingress.class: "traefik"
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      hosts:
+        - host: homelab.haseebmajid.dev
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - homelab.haseebmajid.dev
+          secretName: haseebmajid-dev-tls
+
+
