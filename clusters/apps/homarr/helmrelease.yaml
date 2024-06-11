@@ -13,8 +13,27 @@ spec:
         name: oben01
         namespace: apps
       version: 1.2.5
-  interval: 1m0s
+  interval: 1h
   values:
+    persistence:
+      - name: homarr-config
+        enabled: true
+        storageClassName: "local-path"
+        accessMode: "ReadWriteOnce"
+        size: "50Mi"
+        mountPath: "/app/data/configs"
+      - name: homarr-database
+        enabled: true
+        storageClassName: "local-path"
+        accessMode: "ReadWriteOnce"
+        size: "50Mi"
+        mountPath: "/app/database"
+      - name: homarr-icons
+        enabled: true
+        storageClassName: "local-path"
+        accessMode: "ReadWriteOnce"
+        size: "50Mi"
+        mountPath: "/app/public/icons"
     ingress:
       enabled: true
       className: traefik

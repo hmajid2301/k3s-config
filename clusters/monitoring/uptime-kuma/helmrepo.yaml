@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: k3
+  namespace: monitoring
+spec:
+  interval: 1m0s
+  provider: generic
+  url: https://k3rnelpan1c-dev.github.io/uptime-kuma-helm/

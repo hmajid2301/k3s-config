@@ -2,32 +2,31 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: kubernetes-dashboard
+  name: uptime-kuma
   namespace: monitoring
 spec:
   chart:
     spec:
-      chart: kubernetes-dashboard
+      chart: test-uptime
       sourceRef:
         kind: HelmRepository
-        name: kubernetes-dashboard
+        name: k3
         namespace: monitoring
-      version: 7.4.0
+      version: 1.3.6
   interval: 1h
   values:
+    persistence:
+      enabled: true
     ingress:
       enabled: true
-      ingessClassName: traefik
-      useDefaultAnnotations: false
-      issuer:
-        name: disabled
+      className: traefik
       annotations:
         kubernetes.io/ingress.class: "traefik"
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
       hosts:
-        - kubernetes.homelab.haseebmajid.dev
+        - uptime.homelab.haseebmajid.dev
       tls:
         enabled: true
-        secretName: kubernetes-haseebmajid-dev-tls
+        secretName: uptime-haseebmajid-dev-tls
 
 
