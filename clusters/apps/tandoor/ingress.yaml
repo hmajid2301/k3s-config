@@ -11,6 +11,20 @@ spec:
     - host: recipes.homelab.haseebmajid.dev
       http:
         paths:
+          - path: /static
+            pathType: Prefix
+            backend:
+              service:
+                name: tandoor
+                port:
+                  number: 80
+          - path: /media
+            pathType: Prefix
+            backend:
+              service:
+                name: tandoor
+                port:
+                  number: 80
           - path: /
             pathType: Prefix
             backend:

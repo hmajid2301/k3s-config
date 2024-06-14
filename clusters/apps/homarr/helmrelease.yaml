@@ -18,19 +18,19 @@ spec:
     persistence:
       - name: homarr-config
         enabled: true
-        storageClassName: "local-path"
+        storageClassName: "longhorn"
         accessMode: "ReadWriteOnce"
         size: "50Mi"
         mountPath: "/app/data/configs"
       - name: homarr-database
         enabled: true
-        storageClassName: "local-path"
+        storageClassName: "longhorn"
         accessMode: "ReadWriteOnce"
         size: "50Mi"
         mountPath: "/app/database"
       - name: homarr-icons
         enabled: true
-        storageClassName: "local-path"
+        storageClassName: "longhorn"
         accessMode: "ReadWriteOnce"
         size: "50Mi"
         mountPath: "/app/public/icons"

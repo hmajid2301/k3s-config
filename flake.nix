@@ -16,6 +16,7 @@
         packages = with pkgs; [
           fluxcd
           kubernetes-helm
+          kompose
           k9s
           kubectl
           sops

@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: pajikos
+  name: nextcloud
   namespace: apps
 spec:
   interval: 1h
   provider: generic
-  url: http://pajikos.github.io/home-assistant-helm-chart/
+  url: https://nextcloud.github.io/helm/

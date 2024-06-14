@@ -7,7 +7,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: test-uptime
+      chart: uptime-kuma
       sourceRef:
         kind: HelmRepository
         name: k3
@@ -24,9 +24,18 @@ spec:
         kubernetes.io/ingress.class: "traefik"
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
       hosts:
-        - uptime.homelab.haseebmajid.dev
+        - host: uptime.homelab.haseebmajid.dev
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
       tls:
-        enabled: true
-        secretName: uptime-haseebmajid-dev-tls
-
+        - hosts:
+            - uptime.homelab.haseebmajid.dev
+          secretName: uptime-haseebmajid-dev-tls
+    podSecurityContext:
+      runAsNonRoot: true
+      runAsUser: 3310
+      runAsGroup: 3310
+      fsGroup: 3310
+      fsGroupChangePolicy: "OnRootMismatch"
 

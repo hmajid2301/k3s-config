@@ -42,4 +42,5 @@ spec:
       primary:
         persistence:
           enabled: true
-          size: 50Gi
+          storageClass: "longhorn"
+          size: 8Gi
