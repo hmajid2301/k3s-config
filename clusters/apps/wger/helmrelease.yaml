@@ -14,15 +14,16 @@ spec:
       version: 0.2.0
   interval: 1h
   values:
+    postgres.storage:
+        className: "longhorn"
+        requestedSize: 8Gi
     app:
+      nginx.enabled: true
       persistence:
         enabled: true
         storageClass: "longhorn"
-    ingress:
-      enabled: true
-      ingressClassName: "traefik"
-      url: wger.homelab.haseebmajid.dev
-      tls: true
-      annotations:
-        spec.ingressClassName: "traefik"
-        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        accessModes:
+          - ReadWriteMany
+        sizeMedia: 8Gi
+        sizeStatic: 8Gi
+        sizeCeleryBeat: 1Gi

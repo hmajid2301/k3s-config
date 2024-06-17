@@ -1,4 +1,3 @@
-
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -15,6 +14,20 @@ spec:
       version: 1.2.5
   interval: 1h
   values:
+    env:
+      AUTH_PROVIDER: oidc
+      AUTH_OIDC_URI: https://auth.homelab.haseebmajid.dev/application/o/homarr
+      AUTH_OIDC_CLIENT_NAME: authentik
+      AUTH_OIDC_AUTO_LOGIN: true
+      BASE_URL: homarr.homelab.haseebmajid.dev
+      NEXTAUTH_URL: https://homarr.homelab.haseebmajid.dev
+    envSecrets:
+      AUTH_OIDC_CLIENT_ID:
+       name: homarr-oauth
+       key: client-id
+      AUTH_OIDC_CLIENT_SECRET:
+        name: homarr-oauth
+        key: client-secret
     persistence:
       - name: homarr-config
         enabled: true

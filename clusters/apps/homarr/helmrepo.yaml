@@ -5,6 +5,6 @@ metadata:
   name: oben01
   namespace: apps
 spec:
-  interval: 1m0s
+  interval: 1h
   provider: generic
   url: https://oben01.github.io/charts/
