@@ -14,30 +14,36 @@ spec:
       version: 2024.4.2
   interval: 1h
   values:
-    authentik:
-      secret_key:
-        valuesFrom:
-        - secretKeyRef:
-            name: authentik
+    worker:
+      env:
+      - name: AUTHENTIK_SECRET_KEY
+        valueFrom:
+          secretKeyRef:
+            name: authentik-secrets
             key: secret_key
-      postgresql:
-          password: "ThisIsNotASecurePassword"
     server:
       ingress:
-        ingressClassName: traefik
         enabled: true
+        ingressClassName: "traefik"
         annotations:
-          kubernetes.o/ingress.class: "traefik"
+          kubernetes.io/ingress.class: "traefik"
           cert-manager.io/cluster-issuer: "letsencrypt-prod"
         hosts:
-          - host: auth.homelab.haseebmajid.dev
-            paths:
-              - path: /
-                pathType: ImplementationSpecific
+          - auth.homelab.haseebmajid.dev
         tls:
           - hosts:
-          - auth.homelab.haseebmajid.dev
-        secretName: auth-haseebmajid-dev-tls
+              - auth.homelab.haseebmajid.dev
+            secretName: auth-haseebmajid-dev-tls
+
+      env:
+      - name: AUTHENTIK_SECRET_KEY
+        valueFrom:
+          secretKeyRef:
+            name: authentik-secrets
+            key: secret_key
+    authentik:
+      postgresql:
+          password: "ThisIsNotASecurePassword"
     postgresql:
         enabled: true
         auth:

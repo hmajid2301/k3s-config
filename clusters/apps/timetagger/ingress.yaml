@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: timetagger
+  namespace: apps
+  annotations:
+    spec.ingressClassName: "traefik"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  rules:
+    - host: timetagger.homelab.haseebmajid.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: timetagger
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - timetagger.homelab.haseebmajid.dev
+      secretName: timetagger-haseebmajid-dev-tls

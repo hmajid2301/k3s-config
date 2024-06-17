@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: timetagger
+  namespace: apps
+spec:
+  selector:
+    app: timetagger
+  ports:
+    - name: "80"
+      port: 80
+      targetPort: 80
