@@ -31,6 +31,8 @@ spec:
         - hosts:
             - home.homelab.haseebmajid.dev
           secretName: home-haseebmajid-dev-tls
+    securityContext:
+      privileged: true
     podSecurityContext:
       capabilities:
         add:
@@ -42,5 +44,24 @@ spec:
       accessMode: ReadWriteOnce
       size: 5Gi
       storageClass: "longhorn"
+    additionalVolumes:
+      - hostPath:
+          path: >-
+            /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_94923f9c55a4ed11abf188582981d5c7-if00-port0
+          type: CharDevice
+        name: usb
+    additionalMounts:
+      - mountPath: /dev/ttyACM0
+        name: usb
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - um790
+
 
 

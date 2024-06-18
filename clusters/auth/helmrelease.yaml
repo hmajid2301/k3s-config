@@ -34,7 +34,6 @@ spec:
           - hosts:
               - auth.homelab.haseebmajid.dev
             secretName: auth-haseebmajid-dev-tls
-
       env:
       - name: AUTHENTIK_SECRET_KEY
         valueFrom:
