@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ryot
+  namespace: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ryot
+  template:
+    metadata:
+      labels:
+        app: ryot
+    spec:
+      containers:
+        - env:
+            - name: DATABASE_URL
+              value: postgres://postgres:postgres@ryot-db:5432/postgres
+            - name: USERS_DISABLE_LOCAL_AUTH
+              value: "true"
+            - name: FRONTEND_URL
+              value: https://ryot.homelab.haseebmajid.dev
+            - name: SERVER_OIDC_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: ryot-oauth
+                  key: client-id
+            - name: SERVER_OIDC_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: ryot-oauth
+                  key: client-secret
+            - name: SERVER_OIDC_ISSUER_URL
+              value: https://auth.homelab.haseebmajid.dev/application/o/ryot/
+          image: ignisda/ryot:v6.2.7
+          name: ryot
+          ports:
+            - containerPort: 8000
+              hostPort: 8000
+              protocol: TCP
+      restartPolicy: Always

@@ -1,24 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: nextcloud
+  name: ryot
   namespace: apps
   annotations:
     spec.ingressClassName: "traefik"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   rules:
-    - host: nextcloud.homelab.haseebmajid.dev
+    - host: ryot.homelab.haseebmajid.dev
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: nextcloud
+                name: ryot
                 port:
-                  number: 8080
+                  number: 8000
   tls:
     - hosts:
-        - nextcloud.homelab.haseebmajid.dev
-      secretName: nextcloud-haseebmajid-dev-tls
+        - ryot.homelab.haseebmajid.dev
+      secretName: ryot-haseebmajid-dev-tls

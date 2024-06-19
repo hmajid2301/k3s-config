@@ -15,6 +15,7 @@ spec:
   interval: 1h
   values:
     env:
+      AUTH_OIDC_ADMIN_GROUP: "authentik Admins"
       AUTH_PROVIDER: oidc
       AUTH_OIDC_URI: https://auth.homelab.haseebmajid.dev/application/o/homarr
       AUTH_OIDC_CLIENT_NAME: authentik
