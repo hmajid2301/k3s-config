@@ -29,6 +29,27 @@ spec:
               - alertmanager.homelab.haseebmajid.dev
             secretName: alertmanager-haseebmajid-dev-tls
     grafana:
+      grafana.ini:
+          auth:
+              signout_redirect_url: "https://auth.homelab.haseebmajid.dev/application/o/grafna/end-session/"
+              oauth_auto_login: true
+          auth.generic_oauth:
+              name: authentik
+              enabled: true
+              client_id:
+                valueFrom:
+                  secretKeyRef:
+                    name: grafana-oauth
+                    key: client-id
+              client_secret:
+                valueFrom:
+                  secretKeyRef:
+                    name: grafana-oauth
+                    key: client-secret
+              scopes: "openid profile email"
+              auth_url: "https://auth.homelab.haseebmajid.dev/application/o/authorize/"
+              token_url: "https://auth.homelab.haseebmajid.dev/application/o/token/"
+              api_url: "https://auth.homelab.haseebmajid.dev/application/o/userinfo/"
       ingress:
         enabled: true
         className: traefik
