@@ -1,9 +1,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: cnpg
-  namespace: database
+  name: grafana
+  namespace: monitoring
 spec:
   interval: 1h
   provider: generic
-  url: https://cloudnative-pg.github.io/charts
+  url: https://grafana.github.io/helm-charts

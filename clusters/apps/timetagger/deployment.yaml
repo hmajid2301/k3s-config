@@ -18,9 +18,9 @@ spec:
       containers:
         - env:
             - name: TIMETAGGER_PROXY_AUTH_ENABLED
-              value: "true"
+              value: "True"
             - name: TIMETAGGER_PROXY_AUTH_TRUSTED
-              value: "127.0.0.1,10.0.0.1,10.99.0.0/24,192.168/16,100.0.0.0/8"
+              value: "127.0.0.1,10.0.0.1,10.99.0.0/24,192.168/16,100.0.0.0/8,10.0.0.1/8"
             - name: TIMETAGGER_PROXY_AUTH_HEADER
               value: "X-authentik-username"
             - name: TIMETAGGER_BIND

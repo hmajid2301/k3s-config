@@ -1,9 +1,11 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: cnpg
-  namespace: database
+  name: twingate
+  namespace: auth
 spec:
   interval: 1h
   provider: generic
-  url: https://cloudnative-pg.github.io/charts
+  url: https://twingate.github.io/helm-charts
+
+
