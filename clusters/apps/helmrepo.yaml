@@ -1,11 +1,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: twingate
-  namespace: auth
+  name: bjw-s-charts
+  namespace: apps
 spec:
   interval: 1h
   provider: generic
-  url: https://twingate.github.io/helm-charts
-
-
+  url: https://bjw-s.github.io/helm-charts

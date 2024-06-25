@@ -1,4 +1,5 @@
 .direnv
 public/
 site/
-
+test/
+.pre-commit-config.yaml

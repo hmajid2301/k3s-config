@@ -1,9 +1,9 @@
+
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: gabe565
-  namespace: apps
+  name: minio
+  namespace: gitlab
 spec:
   interval: 1h
-  provider: generic
-  url: https://charts.gabe565.com
+  url: https://charts.min.io/

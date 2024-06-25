@@ -4,30 +4,9 @@ include:
 before_script:
   - nix develop
 
-test:
+lint:
   stage: test
   extends:
     - .nix
-  tags: []
   script:
-    - nix develop -c task test:site
-  rules:
-    - changes:
-      - docs/**/*
-      if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
-
-pages:
-  stage: deploy
-  extends:
-    - .nix
-  tags: []
-  script:
-    - nix develop -c task site
-  artifacts:
-    paths:
-    - public
-  rules:
-    - changes:
-      - docs/**/*
-      if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-
+    - nix develop -c task check

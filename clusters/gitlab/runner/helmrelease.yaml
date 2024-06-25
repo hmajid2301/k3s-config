@@ -19,5 +19,43 @@ spec:
       create: true
     runners:
       secret: gitlab-runner-secret
-
-
+      cache:
+        secretName: minio-secret
+      config: |
+        [[runners]]
+          environment = ["NIX_CI_STORE=unix:///mnt/nix/var/nix/daemon-socket/socket?root=/mnt"]
+          [runners.cache]
+            Type = "s3"
+            Path = "runner"
+            Shared = true
+            [runners.cache.s3]
+              ServerAddress = "minio.gitlab.svc.cluster.local:9000"
+              BucketName = "gitlab-runner"
+              Insecure = true
+              AuthenticationType = "access-key"
+          [runners.kubernetes]
+            image = "ubuntu:24.04"
+            privileged = true
+            # [runners.kubernetes.affinity]
+            #   [runners.kubernetes.affinity.node_affinity]
+            #     [runners.kubernetes.affinity.node_affinity.required_during_scheduling_ignored_during_execution]
+            #       [[runners.kubernetes.affinity.node_affinity.required_during_scheduling_ignored_during_execution.node_selector_terms]]
+            #         [[runners.kubernetes.affinity.node_affinity.required_during_scheduling_ignored_during_execution.node_selector_terms.match_expressions]]
+            #           key = "kubernetes.io/hostname"
+            #           operator = "In"
+            #           values = [
+            #             "um790"
+            #           ]
+          [[runners.kubernetes.volumes.host_path]]
+            name = "nis-store"
+            mount_path = "/mnt/nix"
+            host_path = "/nix/"
+          [[runners.kubernetes.volumes.host_path]]
+            name = "docker-socket"
+            mount_path = "/var/run/docker.sock"
+            host_path = "/var/run/docker.sock"
+            read_Only = true
+          [[runners.kubernetes.volumes.empty_dir]]
+            name = "docker-certs"
+            mount_path = "/var/run"
+            medium = "Memory"
