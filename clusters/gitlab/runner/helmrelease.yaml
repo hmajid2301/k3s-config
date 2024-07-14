@@ -23,7 +23,6 @@ spec:
         secretName: minio-secret
       config: |
         [[runners]]
-          environment = ["NIX_CI_STORE=unix:///mnt/nix/var/nix/daemon-socket/socket?root=/mnt"]
           [runners.cache]
             Type = "s3"
             Path = "runner"
@@ -47,9 +46,9 @@ spec:
             #             "um790"
             #           ]
           [[runners.kubernetes.volumes.host_path]]
-            name = "nis-store"
-            mount_path = "/mnt/nix"
-            host_path = "/nix/"
+            name = "nix-store"
+            mount_path = "/nix"
+            host_path = "/nix"
           [[runners.kubernetes.volumes.host_path]]
             name = "docker-socket"
             mount_path = "/var/run/docker.sock"
