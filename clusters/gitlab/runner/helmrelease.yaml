@@ -45,10 +45,9 @@ spec:
             #           values = [
             #             "um790"
             #           ]
-          # [[runners.kubernetes.volumes.host_path]]
-          #   name = "nix-store"
-          #   mount_path = "/nix"
-          #   host_path = "/nix"
+          [[runners.kubernetes.volumes.host_path]]
+            name = "nix-store"
+            mount_path = "/nix/"
           [[runners.kubernetes.volumes.host_path]]
             name = "docker-socket"
             mount_path = "/var/run/docker.sock"
