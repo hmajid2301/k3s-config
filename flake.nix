@@ -26,7 +26,6 @@
           trim-trailing-whitespace.enable = true;
 
           yamllint.enable = true;
-          yamlfmt.enable = true;
           pre-commit-hook-ensure-sops.enable = true;
         };
       };

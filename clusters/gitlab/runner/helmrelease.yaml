@@ -35,19 +35,6 @@ spec:
           [runners.kubernetes]
             image = "ubuntu:24.04"
             privileged = true
-            # [runners.kubernetes.affinity]
-            #   [runners.kubernetes.affinity.node_affinity]
-            #     [runners.kubernetes.affinity.node_affinity.required_during_scheduling_ignored_during_execution]
-            #       [[runners.kubernetes.affinity.node_affinity.required_during_scheduling_ignored_during_execution.node_selector_terms]]
-            #         [[runners.kubernetes.affinity.node_affinity.required_during_scheduling_ignored_during_execution.node_selector_terms.match_expressions]]
-            #           key = "kubernetes.io/hostname"
-            #           operator = "In"
-            #           values = [
-            #             "um790"
-            #           ]
-          [[runners.kubernetes.volumes.host_path]]
-            name = "nix-store"
-            mount_path = "/nix/"
           [[runners.kubernetes.volumes.host_path]]
             name = "docker-socket"
             mount_path = "/var/run/docker.sock"
