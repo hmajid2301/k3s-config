@@ -1,9 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: adminafk
-  namespace: apps
-spec:
-  interval: 1h
-  provider: generic
-  url: https://helm-charts.adminafk.fr
