@@ -1,9 +1,0 @@
----
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: selfhosted-helmcharts
-  namespace: apps
-spec:
-  interval: 1h
-  url: https://vyrtualsynthese.github.io/selfhosted-helmcharts/
