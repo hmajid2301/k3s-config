@@ -1,9 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: pajikos
-  namespace: apps
-spec:
-  interval: 1h
-  provider: generic
-  url: http://pajikos.github.io/home-assistant-helm-chart/
