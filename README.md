@@ -30,7 +30,7 @@ This repository uses Flux CD for Git Ops, to automatically deploy changes made t
 > Note I copied the kube config file from the cluster and called it config.personal
 
 ```bash
-git clone git@gitlab.com:hmajid2301/homelab.git
+git clone git@gitlab.com:hmajid2301/k3s-config.git
 cd homelab
 direnv allow
 
