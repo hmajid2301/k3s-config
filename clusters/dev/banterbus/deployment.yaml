@@ -17,6 +17,7 @@ spec:
       containers:
         - name: banterbus
           image: registry.gitlab.com/hmajid2301/banterbus:dev
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
               hostPort: 8080
