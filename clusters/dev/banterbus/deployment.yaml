@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: banterbus
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: banterbus
+  template:
+    metadata:
+      labels:
+        app: banterbus
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: banterbus
+          image: registry.gitlab.com/hmajid2301/banterbus:dev
+          ports:
+            - containerPort: 8080
+              hostPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 15
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+          env:
+            - name: BANTERBUS_DB_FOLDER
+              value: /
