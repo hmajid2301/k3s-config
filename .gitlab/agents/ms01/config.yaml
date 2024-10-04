@@ -1,0 +1,9 @@
+user_access:
+  access_as:
+    agent: {}
+  projects:
+    - id: hmajid2301/banterbus
+
+ci_access:
+  projects:
+    - id: hmajid2301/banterbus
