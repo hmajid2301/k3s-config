@@ -1,0 +1,22 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Provider
+metadata:
+  name: gitlab-status
+  namespace: flux-system
+spec:
+  type: gitlab
+  address: https://gitlab.com/hmajid2301/k3s-config
+  secretRef:
+    name: gitlab-token
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: gitlab-status
+  namespace: flux-system
+spec:
+  providerRef:
+    name: gitlab-status
+  eventSources:
+    - kind: Kustomization
+      name: flux-system
