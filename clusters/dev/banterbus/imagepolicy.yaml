@@ -6,3 +6,6 @@ metadata:
 spec:
   imageRepositoryRef:
     name: banterbus
+  policy:
+    semver:
+      range: "1.0.x"
