@@ -1,0 +1,58 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: loki
+  namespace: monitoring
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: loki
+      version: "6.16.0"
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: monitoring
+      interval: 12h
+  values:
+    deploymentMode: SingleBinary
+    loki:
+      auth_enabled: false
+      commonConfig:
+        replication_factor: 1
+      storage:
+        type: "filesystem"
+      schemaConfig:
+        configs:
+          - from: "2024-01-01"
+            store: tsdb
+            index:
+              prefix: loki_index_
+              period: 24h
+            object_store: filesystem # we're storing on filesystem so there's no real persistence here.
+            schema: v13
+    singleBinary:
+      replicas: 1
+    read:
+      replicas: 0
+    backend:
+      replicas: 0
+    write:
+      replicas: 0
+    monitoring:
+      selfMonitoring:
+        enabled: true
+        grafanaAgent:
+          installOperator: false
+      # dashboards:
+      #   enabled: false
+      # rules:
+      #   enabled: false
+      #   alerting: false
+    extraEnv:
+      - name: MY_POD_IP
+        valueFrom:
+          fieldRef:
+            fieldPath: status.podIP
+    extraArgs:
+      - -memberlist.bind-addr=$(MY_POD_IP)
