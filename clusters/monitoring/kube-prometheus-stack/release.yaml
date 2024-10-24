@@ -28,11 +28,11 @@ spec:
   values:
     grafana:
       enabled: false
-    prometheus:
-      prometheusSpec:
-        podMonitorNamespaceSelector:
-          matchLabels:
-            podmonitorscrape: "true"
-        serviceMonitorSelector:
-          matchLabels:
-            team: frontend
+    # prometheus:
+    #   prometheusSpec:
+    #     podMonitorNamespaceSelector:
+    #       matchLabels:
+    #         podmonitorscrape: "true"
+    #     serviceMonitorSelector:
+    #       matchLabels:
+    #         team: frontend
