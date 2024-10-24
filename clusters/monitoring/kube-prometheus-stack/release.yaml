@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: "58.x"
+      version: "65.x"
       sourceRef:
         kind: HelmRepository
         name: kube-prometheus-stack
@@ -28,12 +28,9 @@ spec:
   values:
     grafana:
       enabled: false
+
     prometheus:
       prometheusSpec:
-        podMonitorNamespaceSelector:
-          matchLabels:
-            podmonitorscrape: "true"
-        podMonitorSelectorNilUsesHelmValues: false
-        probeSelectorNilUsesHelmValues: false
-        ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
+        serviceMonitorSelector: {}
+        serviceMonitorNamespaceSelector: {}
