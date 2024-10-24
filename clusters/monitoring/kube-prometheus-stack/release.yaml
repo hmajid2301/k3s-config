@@ -33,3 +33,6 @@ spec:
         podMonitorNamespaceSelector:
           matchLabels:
             podmonitorscrape: "true"
+        serviceMonitorSelector:
+          matchLabels:
+            team: frontend
