@@ -56,3 +56,20 @@ spec:
             fieldPath: status.podIP
     extraArgs:
       - -memberlist.bind-addr=$(MY_POD_IP)
+    gateway:
+      enabled: true
+      ingress:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          spec.ingressClassName: "traefik"
+          cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        hosts:
+          - host: loki.k8s.homelab.haseebmajid.dev
+            paths:
+              - path: /
+                pathType: ImplementationSpecific
+        tls:
+          - secretName: loki-haseebmajid-dev-tls
+            hosts:
+              - loki.k8s.homelab.haseebmajid.dev
