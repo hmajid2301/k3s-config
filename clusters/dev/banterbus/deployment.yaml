@@ -40,3 +40,5 @@ spec:
           env:
             - name: BANTERBUS_DB_FOLDER
               value: /
+            - name: BANTERBUS_REDIS_ADDRESS
+              value: redis.homelab.haseebmajid.dev:6381
