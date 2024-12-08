@@ -4,7 +4,7 @@ metadata:
   name: banterbus
   namespace: dev
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: banterbus
@@ -20,7 +20,6 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
-              hostPort: 8080
               protocol: TCP
           livenessProbe:
             httpGet:
@@ -38,7 +37,16 @@ spec:
             initialDelaySeconds: 5
             timeoutSeconds: 1
           env:
-            - name: BANTERBUS_DB_FOLDER
-              value: /
             - name: BANTERBUS_REDIS_ADDRESS
               value: redis.homelab.haseebmajid.dev:6381
+            - name: BANTERBUS_DB_USERNAME
+              value: banterbus
+            - name: BANTERBUS_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: banterbus
+                  key: db_password
+            - name: BANTERBUS_DB_HOST
+              value: postgres.homelab.haseebmajid.dev
+            - name: BANTERBUS_DB_PORT
+              value: "5433"
