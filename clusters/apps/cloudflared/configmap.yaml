@@ -1,60 +1,12 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: cloudflared
-  namespace: dev
-spec:
-  selector:
-    matchLabels:
-      app: cloudflared
-  replicas: 2
-  template:
-    metadata:
-      labels:
-        app: cloudflared
-    spec:
-      containers:
-      - name: cloudflared
-        image: cloudflare/cloudflared:2024.9.1
-        args:
-        - tunnel
-        - --config
-        - /etc/cloudflared/config/config.yaml
-        - run
-        livenessProbe:
-          httpGet:
-            path: /ready
-            port: 2000
-          failureThreshold: 1
-          initialDelaySeconds: 10
-          periodSeconds: 10
-        volumeMounts:
-        - name: config
-          mountPath: /etc/cloudflared/config
-          readOnly: true
-        - name: creds
-          mountPath: /etc/cloudflared/creds
-          readOnly: true
-      volumes:
-      - name: creds
-        secret:
-          secretName: tunnel-credentials
-      - name: config
-        configMap:
-          name: cloudflared
-          items:
-          - key: config.yaml
-            path: config.yaml
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cloudflared
-  namespace: dev
+  namespace: apps
 data:
   config.yaml: |
     # Name of the tunnel you want to run
-    tunnel: k8s-dev
+    tunnel: k8s-apps
     credentials-file: /etc/cloudflared/creds/credentials.json
     # Serves the metrics server under /metrics and the readiness server under /ready
     metrics: 0.0.0.0:2000
@@ -71,12 +23,12 @@ data:
     # E.g. `cloudflared tunnel route dns example-tunnel tunnel.example.com`.
     ingress:
     # The first rule proxies traffic to the httpbin sample Service defined in app.yaml
-    - hostname: dev.banterbus.games
-      service: http://banterbus:8080
+    - hostname: budibase.haseebmajid.dev
+      service: http://proxy-service:10000
     # This rule sends traffic to the built-in hello-world HTTP server. This can help debug connectivity
     # issues. If hello.example.com resolves and tunnel.example.com does not, then the problem is
     # in the connection from cloudflared to your local service, not from the internet to cloudflared.
-    - hostname: hello.banterbus.games
+    - hostname: hello.haseebmajid.dev
       service: hello_world
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404

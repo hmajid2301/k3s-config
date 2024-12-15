@@ -14,16 +14,3 @@ spec:
       version: "*"
   interval: 1h
   values:
-    ingress:
-      enabled: true
-      className: "traefik"
-      hosts:
-        - host: "budibase.k8s.homelab.haseebmajid.dev"
-          paths:
-            - path: /
-              pathType: Prefix
-              backend:
-                service:
-                  name: proxy-service
-                  port:
-                    number: 10000

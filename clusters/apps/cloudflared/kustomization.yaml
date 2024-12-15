@@ -1,0 +1,11 @@
+resources:
+  - ../../base/cloudflared
+  - ./secrets.yaml
+
+configMapGenerator:
+- name: cloudflared
+  behavior: merge
+  files:
+  - ./configmap.yaml
+
+namespace: apps
