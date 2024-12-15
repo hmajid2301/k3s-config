@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: banterbus
-  namespace: dev
+  namespace: default
 spec:
   replicas: 2
   selector:
@@ -16,7 +16,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: banterbus
-          image: registry.gitlab.com/hmajid2301/banterbus:dev # {"$imagepolicy": "dev:banterbus"}
+          image: registry.gitlab.com/hmajid2301/banterbus:dev
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -40,7 +40,15 @@ spec:
             - name: BANTERBUS_REDIS_ADDRESS
               value: redis.homelab.haseebmajid.dev:6381
             - name: BANTERBUS_DB_USERNAME
-              value: banterbus
+              valueFrom:
+                configMapKeyRef:
+                  name: banterbus
+                  key: BANTERBUS_DB_USERNAME
+            - name: BANTERBUS_DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: banterbus
+                  key: BANTERBUS_DB_NAME
             - name: BANTERBUS_DB_PASSWORD
               valueFrom:
                 secretKeyRef:

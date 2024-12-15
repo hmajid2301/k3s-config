@@ -47,6 +47,8 @@
           k9s
           kubectl
           sops
+          kustomize
+          cloudflared
 
           go-task
         ];

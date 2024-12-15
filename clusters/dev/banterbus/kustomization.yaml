@@ -1,0 +1,12 @@
+resources:
+  - ../../base/banterbus
+  - ./secrets.yaml
+  - ./configmap.yaml
+
+# configMapGenerator:
+# - name: banterbus
+#   behavior: merge
+#   files:
+#   - ./configmap.yaml
+
+namespace: dev

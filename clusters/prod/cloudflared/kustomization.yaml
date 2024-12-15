@@ -3,4 +3,4 @@ resources:
   - ./secrets.yaml
   - ./configmap.yaml
 
-namespace: apps
+namespace: prod

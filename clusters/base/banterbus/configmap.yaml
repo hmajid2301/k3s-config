@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: banterbus
+  namespace: default
+data:
+  BANTERBUS_DB_NAME: banterbus
+  BANTERBUS_DB_USERNAME: banterbus
