@@ -1,5 +1,7 @@
 resources:
-  - deployment.yaml
-  - service.yaml
+  - ./deployment.yaml
+  - ./service.yaml
+  - ./servicemonitor.yaml
+  - ./imagerepository.yaml
+  - ./imagepolicy.yaml
   # - configmap.yaml
-  - servicemonitor.yaml

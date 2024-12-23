@@ -10,3 +10,8 @@ resources:
 #   - ./configmap.yaml
 
 namespace: prod
+
+images:
+  - name: registry.gitlab.com/hmajid2301/banterbus
+    newName: registry.gitlab.com/hmajid2301/banterbus # {"$imagepolicy": "flux-system:banterbus-prod:name"}
+    newTag: prod # {"$imagepolicy": "flux-system:banterbus-prod:tag"}
