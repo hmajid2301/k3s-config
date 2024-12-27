@@ -1,5 +1,5 @@
-# include:
-#   - 'https://gitlab.com/Cynerd/gitlab-ci-nix/-/raw/master/template.yml'
+ include:
+   - 'https://gitlab.com/Cynerd/gitlab-ci-nix/-/raw/master/template.yml'
 
 # before_script:
 #   - nix develop
