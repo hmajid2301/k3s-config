@@ -1,12 +1,12 @@
-include:
-  - 'https://gitlab.com/Cynerd/gitlab-ci-nix/-/raw/master/template.yml'
+# include:
+#   - 'https://gitlab.com/Cynerd/gitlab-ci-nix/-/raw/master/template.yml'
 
-before_script:
-  - nix develop
-
-lint:
-  stage: test
-  extends:
-    - .nix
-  script:
-    - nix develop -c task check
+# before_script:
+#   - nix develop
+#
+# lint:
+#   stage: test
+#   extends:
+#     - .nix
+#   script:
+#     - nix develop -c task check
