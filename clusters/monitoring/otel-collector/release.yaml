@@ -50,3 +50,18 @@ spec:
             receivers: ["otlp"]
             processors: ["batch"]
             exporters: ["prometheus"]
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+ name: otel-collector
+ namespace: monitoring
+ labels:
+   release: prometheus
+spec:
+ selector:
+   matchLabels:
+     app: otel-collector
+ endpoints:
+   - port: metrics
+     interval: 30s
