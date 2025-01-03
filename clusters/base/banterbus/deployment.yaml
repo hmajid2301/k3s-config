@@ -35,7 +35,8 @@ spec:
               port: 8080
               scheme: HTTP
             initialDelaySeconds: 5
-            timeoutSeconds: 1
+            periodSeconds: 15
+            timeoutSeconds: 5
           env:
             - name: BANTERBUS_REDIS_ADDRESS
               value: redis.homelab.haseebmajid.dev:6381
