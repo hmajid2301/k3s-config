@@ -67,7 +67,6 @@ data:
         - role: pod
       pipeline_stages:
         - cri: {}
-        - docker: {}
       relabel_configs:
         - source_labels:
             - __meta_kubernetes_pod_node_name
