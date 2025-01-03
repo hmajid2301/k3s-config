@@ -15,22 +15,10 @@ spec:
         namespace: monitoring
       interval: 12h
   values:
-    storage:
-      trace:
-        backend: s3
-        s3:
-          access_key:
-            valueFrom:
-              secretKeyRef:
-                name: tempo
-                key: access_key
-          secret_key:
-            valueFrom:
-              secretKeyRef:
-                name: tempo
-                key: secret_key
-        bucket: 'tempo'
-        endpoint: 'minio.homelab.haseebmajid.dev'
+    persistence:
+      enabled: true
+    #   size: 10Gi
+    #   storageClassName: "standard"  # Adjust this to match your cluster's storage class
     traces:
       otlp:
         grpc:
