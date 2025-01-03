@@ -6,3 +6,4 @@ metadata:
 data:
   BANTERBUS_DB_USERNAME: banterbus_dev
   BANTERBUS_DB_NAME: banterbus_dev
+  BANTERBUS_ENVIRONMENT: development
