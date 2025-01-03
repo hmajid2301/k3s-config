@@ -66,6 +66,7 @@ data:
       kubernetes_sd_configs:
         - role: pod
       pipeline_stages:
+        - cri: {}
         - docker: {}
       relabel_configs:
         - source_labels:
