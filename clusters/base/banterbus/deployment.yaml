@@ -61,3 +61,5 @@ spec:
               value: "5433"
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://otel-collector-opentelemetry-collector.monitoring.svc.cluster.local:4318
+            - name: BANTERBUS_JWKS_URL
+              value: https://authentik.haseebmajid.dev/application/o/budibase/jwks/
