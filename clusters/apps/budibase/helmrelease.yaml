@@ -14,9 +14,7 @@ spec:
       version: "*"
   interval: 1h
   values:
-    couchdb:
-      persistentVolume:
-        enabled: true
+    # TODO: set this up properly
     # services:
     #   objectStore:
     #     minio: false
