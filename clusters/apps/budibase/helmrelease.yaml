@@ -28,20 +28,22 @@ spec:
             secretKeyRef:
               name: budibase
               key: minio_secret_key
-      redis:
-         enabled: false
-         port: 6381
-         url: "redis.homelab.haseebmajid.dev"
-      couchdb:
-         enabled: false
-         url: "https://couchbase.homelab.haseebmajid.dev"
-         user:
-           valueFrom:
-             secretKeyRef:
-               name: budibase
-               key: couchdb_user
-         password:
-           valueFrom:
-             secretKeyRef:
-               name: budibase
-               key: couchdb_pass
+
+      # redis:
+      #    enabled: false
+      #    port: 6381
+      #    url: "redis.homelab.haseebmajid.dev"
+      #
+      # couchdb:
+      #    enabled: false
+      #    url: "https://couchdb.homelab.haseebmajid.dev"
+      #    user:
+      #      valueFrom:
+      #        secretKeyRef:
+      #          name: budibase
+      #          key: couchdb_user
+      #    password:
+      #      valueFrom:
+      #        secretKeyRef:
+      #          name: budibase
+      #          key: couchdb_pass
