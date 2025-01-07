@@ -18,8 +18,16 @@ spec:
       objectStore:
         minio: false
         url: "https://minio.homelab.haseebmajid.dev"
-        accessKey: "your-access-key" # AWS_ACCESS_KEY
-        secretKey: "your-secret-key" # AWS_SECRET_ACCESS_KEY
+        accessKey:
+          valueFrom:
+            secretKeyRef:
+              name: budibase
+              key: minio_access_key
+        secretKey:
+          valueFrom:
+            secretKeyRef:
+              name: budibase
+              key: minio_secret_key
       redis:
          enabled: false
          port: 6381
@@ -27,5 +35,13 @@ spec:
       couchdb:
          enabled: false
          url: "https://couchbase.homelab.haseebmajid.dev"
-         user: "couchuser"
-         password: "couchpassword"
+         user:
+           valueFrom:
+             secretKeyRef:
+               name: budibase
+               key: couchdb_user
+         password:
+           valueFrom:
+             secretKeyRef:
+               name: budibase
+               key: couchdb_pass
