@@ -21,12 +21,12 @@ spec:
         accessKey:
           valueFrom:
             secretKeyRef:
-              name: budibase
+              name: budibase_infra
               key: minio_access_key
         secretKey:
           valueFrom:
             secretKeyRef:
-              name: budibase
+              name: budibase_infra
               key: minio_secret_key
 
       # redis:
@@ -44,5 +44,5 @@ spec:
          password:
            valueFrom:
              secretKeyRef:
-               name: budibase
+               name: budibase_infra
                key: couchdb_pass
