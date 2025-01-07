@@ -14,20 +14,20 @@ spec:
       version: "*"
   interval: 1h
   values:
-    services:
-      objectStore:
-        minio: false
-        url: "https://minio.homelab.haseebmajid.dev"
-        accessKey:
-          valueFrom:
-            secretKeyRef:
-              name: budibase-infra
-              key: minio_access_key
-        secretKey:
-          valueFrom:
-            secretKeyRef:
-              name: budibase-infra
-              key: minio_secret_key
+    # services:
+    #   objectStore:
+    #     minio: false
+    #     url: "https://minio.homelab.haseebmajid.dev"
+    #     accessKey:
+    #       valueFrom:
+    #         secretKeyRef:
+    #           name: budibase-infra
+    #           key: minio_access_key
+    #     secretKey:
+    #       valueFrom:
+    #         secretKeyRef:
+    #           name: budibase-infra
+    #           key: minio_secret_key
 
       # redis:
       #    enabled: false
