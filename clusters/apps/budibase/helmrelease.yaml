@@ -14,7 +14,7 @@ spec:
       version: "*"
   interval: 1h
   values:
-    # services:
+    services:
       # objectStore:
       #   minio: false
       #   url: "https://minio.homelab.haseebmajid.dev"
@@ -29,10 +29,10 @@ spec:
       #         name: budibase
       #         key: minio_secret_key
 
-      # redis:
-      #    enabled: false
-      #    port: 6381
-      #    url: "redis.homelab.haseebmajid.dev"
+      redis:
+         enabled: false
+         port: 6381
+         url: "redis.homelab.haseebmajid.dev"
       #
       # couchdb:
       #    enabled: false
