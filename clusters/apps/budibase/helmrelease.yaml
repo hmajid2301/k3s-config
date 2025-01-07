@@ -33,16 +33,16 @@ spec:
       #    enabled: false
       #    url: "redis.homelab.haseebmajid.dev:6381"
 
-      # couchdb:
-      #    enabled: false
-      #    url: "https://couchdb.homelab.haseebmajid.dev"
-      #    user: "budibase"
-      #      # valueFrom:
-      #      #   secretKeyRef:
-      #      #     name: budibase
-      #      #     key: couchdb_user
-      #    password:
-      #      valueFrom:
-      #        secretKeyRef:
-      #          name: budibase-infra
-      #          key: couchdb_pass
+      couchdb:
+         enabled: false
+         url: "https://couchdb.homelab.haseebmajid.dev"
+         user: "budibase"
+           # valueFrom:
+           #   secretKeyRef:
+           #     name: budibase
+           #     key: couchdb_user
+         password:
+           valueFrom:
+             secretKeyRef:
+               name: budibase-infra
+               key: couchdb_pass
