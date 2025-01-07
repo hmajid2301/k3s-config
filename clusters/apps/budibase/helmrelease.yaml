@@ -36,11 +36,11 @@ spec:
       couchdb:
          enabled: false
          url: "https://couchdb.homelab.haseebmajid.dev"
-         user:
-           valueFrom:
-             secretKeyRef:
-               name: budibase
-               key: couchdb_user
+         user: "budibase"
+           # valueFrom:
+           #   secretKeyRef:
+           #     name: budibase
+           #     key: couchdb_user
          password:
            valueFrom:
              secretKeyRef:
