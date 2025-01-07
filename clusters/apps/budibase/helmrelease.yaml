@@ -14,3 +14,18 @@ spec:
       version: "*"
   interval: 1h
   values:
+    services:
+      objectStore:
+        minio: false
+        url: "https://minio.homelab.haseebmajid.dev"
+        accessKey: "your-access-key" # AWS_ACCESS_KEY
+        secretKey: "your-secret-key" # AWS_SECRET_ACCESS_KEY
+      redis:
+         enabled: false
+         port: 6381
+         url: "redis.homelab.haseebmajid.dev"
+      couchdb:
+         enabled: false
+         url: "https://couchbase.homelab.haseebmajid.dev"
+         user: "couchuser"
+         password: "couchpassword"
