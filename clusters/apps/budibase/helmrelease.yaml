@@ -31,8 +31,7 @@ spec:
 
       redis:
          enabled: false
-         port: 6381
-         url: "redis.homelab.haseebmajid.dev"
+         url: "redis.homelab.haseebmajid.dev:6381"
       #
       # couchdb:
       #    enabled: false
