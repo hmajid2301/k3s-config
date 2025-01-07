@@ -15,19 +15,19 @@ spec:
   interval: 1h
   values:
     services:
-      # objectStore:
-      #   minio: false
-      #   url: "https://minio.homelab.haseebmajid.dev"
-      #   accessKey:
-      #     valueFrom:
-      #       secretKeyRef:
-      #         name: budibase
-      #         key: minio_access_key
-      #   secretKey:
-      #     valueFrom:
-      #       secretKeyRef:
-      #         name: budibase
-      #         key: minio_secret_key
+      objectStore:
+        minio: false
+        url: "https://minio.homelab.haseebmajid.dev"
+        accessKey:
+          valueFrom:
+            secretKeyRef:
+              name: budibase
+              key: minio_access_key
+        secretKey:
+          valueFrom:
+            secretKeyRef:
+              name: budibase
+              key: minio_secret_key
 
       redis:
          enabled: false
