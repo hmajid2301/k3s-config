@@ -14,7 +14,7 @@ spec:
       version: "*"
   interval: 1h
   values:
-    # services:
+    services:
     #   objectStore:
     #     minio: false
     #     url: "https://minio.homelab.haseebmajid.dev"
