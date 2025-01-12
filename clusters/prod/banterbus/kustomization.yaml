@@ -1,14 +1,19 @@
 resources:
   - ../../base/banterbus
   - ./secrets.yaml
-  - ./configmap.yaml
-# configMapGenerator:
-# - name: banterbus
-#   behavior: merge
-#   files:
-#   - ./configmap.yaml
+
+configMapGenerator:
+  - name: banterbus
+    literals:
+      - BANTERBUS_DB_USERNAME=banterbus
+      - BANTERBUS_DB_NAME=banterbus
+      - BANTERBUS_ENVIRONMENT=production
+
 namespace: prod
 images:
   - name: registry.gitlab.com/hmajid2301/banterbus
     newName: registry.gitlab.com/hmajid2301/banterbus # {"$imagepolicy": "flux-system:banterbus-prod:name"}
     newTag: prod-d65b34988052fbea94acaf471071ed2700ca524c-1736641140 # {"$imagepolicy": "flux-system:banterbus-prod:tag"}
+
+patchesStrategicMerge:
+  - deployment-patch.yaml
