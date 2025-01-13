@@ -30,6 +30,9 @@ spec:
       enabled: false
 
     prometheus:
+      extraArgs:
+        web.enable-remote-write-receiver: null
+
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
         serviceMonitorSelector: {}
