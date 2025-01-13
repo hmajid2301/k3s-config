@@ -11,6 +11,6 @@ namespace: prod
 images:
   - name: registry.gitlab.com/hmajid2301/banterbus
     newName: registry.gitlab.com/hmajid2301/banterbus # {"$imagepolicy": "flux-system:banterbus-prod:name"}
-    newTag: prod-a9a52d3eb74c8937cdb94b27668c6242974352c2-1736720679 # {"$imagepolicy": "flux-system:banterbus-prod:tag"}
+    newTag: prod-4133d7c0a292f06c54b164432ff3e2a107892c59-1736793977 # {"$imagepolicy": "flux-system:banterbus-prod:tag"}
 patchesStrategicMerge:
   - deployment-patch.yaml
