@@ -11,6 +11,6 @@ namespace: dev
 images:
   - name: registry.gitlab.com/hmajid2301/banterbus
     newName: registry.gitlab.com/hmajid2301/banterbus # {"$imagepolicy": "flux-system:banterbus-dev:name"}
-    newTag: dev-b182efed9773326de40cdbe680ceb08c532593fc-1738613424 # {"$imagepolicy": "flux-system:banterbus-dev:tag"}
+    newTag: dev-74cb3e5b181478019392b561b703a869cbe6d516-1738614471 # {"$imagepolicy": "flux-system:banterbus-dev:tag"}
 patchesStrategicMerge:
   - deployment-patch.yaml
