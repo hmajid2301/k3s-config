@@ -1,0 +1,38 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "enabled": true,
+    "platformAutomerge": true,
+    "automergeStrategy": "squash",
+    "packageRules": [
+        {
+            "description": "Group minor/patch Helm chart updates together",
+            "matchManagers": [
+                "flux"
+            ],
+            "matchUpdateTypes": [
+                "minor",
+                "patch"
+            ],
+            "groupName": "helm-dependencies"
+        },
+        {
+            "description": "Automatically merge patch updates",
+            "matchManagers": [
+                "flux"
+            ],
+            "matchUpdateTypes": [
+                "patch"
+            ],
+            "automerge": true
+        }
+    ],
+    "flux": {
+        "fileMatch": [
+            "clusters/.*.yaml",
+            "apps/.*.yaml",
+            "infrastructure/.*.yaml",
+            "releases/.+\\.yaml$"
+        ]
+    },
+    "dependencyDashboard": true
+}
