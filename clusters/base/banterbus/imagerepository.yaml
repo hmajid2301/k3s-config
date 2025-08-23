@@ -4,5 +4,5 @@ metadata:
   name: banterbus
   namespace: flux-system
 spec:
-  image: registry.gitlab.com/hmajid2301/banterbus
+  image: registry.gitlab.com/banterbus/banterbus
   interval: 5m
