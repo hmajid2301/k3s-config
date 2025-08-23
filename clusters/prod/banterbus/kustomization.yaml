@@ -10,7 +10,7 @@ configMapGenerator:
 namespace: prod
 images:
   - name: registry.gitlab.com/hmajid2301/banterbus
-    newName: registry.gitlab.com/hmajid2301/banterbus # {"$imagepolicy": "flux-system:banterbus-prod:name"}
-    newTag: prod-3771ea280cdc92147a77f3b3a43247270cda4fce-1739311783 # {"$imagepolicy": "flux-system:banterbus-prod:tag"}
+    newName: registry.gitlab.com/banterbus/banterbus # {"$imagepolicy": "flux-system:banterbus-prod:name"}
+    newTag: prod-908a2a9ed714244d255aef0bc1f262f1f17b8c60-1755863414 # {"$imagepolicy": "flux-system:banterbus-prod:tag"}
 patchesStrategicMerge:
   - deployment-patch.yaml
