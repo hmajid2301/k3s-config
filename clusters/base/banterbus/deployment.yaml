@@ -16,7 +16,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: banterbus
-          image: registry.gitlab.com/banterbus/banterbus:latest
+          image: registry.gitlab.com/banterbus/banterbus:prod-908a2a9ed714244d255aef0bc1f262f1f17b8c60-1755863414
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
